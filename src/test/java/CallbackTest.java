@@ -17,11 +17,13 @@ public class CallbackTest {
     @BeforeAll
     public static void setUpAll(){
         System.setProperty("webdriver.chrome.driver","./driver/win/chromedriver.exe");
+
     }
 
     @BeforeEach
     public void setUp(){
         driver = new ChromeDriver();
+
     }
 
     @AfterEach
@@ -38,13 +40,14 @@ public class CallbackTest {
         elements.get(1).sendKeys("+79003333333");
 //       driver.findElement(By.cssSelector("[type=`text`]")).sendKeys ("Абъдуллаев Ян");
  //      driver.findElement(By.cssSelector("[type=`tel`]")).sendKeys("+79003333333");
-       driver.findElement(By.className("checkbox")).click();
-       driver.findElement(By.tagName("button")).click();
-       System.out.println();
+        driver.findElement(By.className("checkbox")).click();
+        driver.findElement(By.tagName("button")).click();
+        System.out.println();
 
        String actualText = driver.findElement(By.className("paragraph")).getText().trim();
        String expected = ("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.");
-       assertEquals (expected, actualText);
+
+        assertEquals (expected, actualText);
 
     }
 }
