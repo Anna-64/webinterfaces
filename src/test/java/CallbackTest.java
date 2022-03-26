@@ -16,11 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CallbackTest {
     private WebDriver driver;
 
-    @BeforeAll
-    public static void setUpAll(){
-        System.setProperty("webdriver.chrome.driver","./driver/win/chromedriver.exe");
-
-    }
+//    @BeforeAll
+//    public static void setUpAll(){
+//        System.setProperty("webdriver.chrome.driver","./driver/win/chromedriver.exe");
+//
+//    }
 
     @BeforeEach
     public void setUp(){
@@ -52,7 +52,7 @@ public class CallbackTest {
         driver.findElement(By.cssSelector("button")).click();
         System.out.println();
 
-       String actualText = driver.findElement(By.cssSelector("[data-test-id='order-success'].paragraph")).getText().trim();
+       String actualText = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
 
         assertEquals (expected, actualText);
