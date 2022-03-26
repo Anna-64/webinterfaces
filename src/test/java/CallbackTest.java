@@ -29,6 +29,7 @@ public class CallbackTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999/");
 
     }
 
@@ -40,17 +41,17 @@ public class CallbackTest {
 
     @Test
     public void shouldSendForm(){
-        driver.get("http://localhost:9999");
-        List<WebElement> elements = driver.findElements(By.cssSelector("input.input__control"));
-        elements.get(0).sendKeys("Абъдуллаев Ян");
-        elements.get(1).sendKeys("+79003333333");
-//       driver.findElement(By.cssSelector("[type=`text`]")).sendKeys ("Абъдуллаев Ян");
- //      driver.findElement(By.cssSelector("[type=`tel`]")).sendKeys("+79003333333");
-        driver.findElement(By.className("checkbox")).click();
-        driver.findElement(By.tagName("button")).click();
+
+//        List<WebElement> elements = driver.findElements(By.cssSelector("input.input__control"));
+//        elements.get(0).sendKeys("Абъдуллаев Ян");
+//        elements.get(1).sendKeys("+79003333333");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Абъдуллаев Ян");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79003333333");
+        driver.findElement(By.cssSelector(".checkbox__text")).click();
+        driver.findElement(By.cssSelector("button")).click();
         System.out.println();
 
-       String actualText = driver.findElement(By.className("paragraph")).getText().trim();
+       String actualText = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
        String expected = ("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.");
 
         assertEquals (expected, actualText);
